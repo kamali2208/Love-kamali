@@ -1,0 +1,3252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#08070d">
+<title>LOVEFLIX — Kamali × Thraveen</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,600&display=swap');
+
+:root{
+ --bg:#08070d;
+ --card:#141019;
+ --card2:#201725;
+ --gold:#e8c878;
+ --pink:#ff5b91;
+ --purple:#9b72ff;
+ --white:#fff;
+ --muted:#aaa2ae;
+ --line:#ffffff18;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+ margin:0;
+ background:
+ radial-gradient(circle at 15% 0,#391936 0,transparent 32%),
+ radial-gradient(circle at 90% 20%,#171a40 0,transparent 30%),
+ var(--bg);
+ color:var(--white);
+ font-family:Inter,Arial,sans-serif;
+ overflow-x:hidden;
+}
+
+button{
+ font-family:inherit;
+ cursor:pointer;
+}
+
+.hidden{display:none!important}
+
+/* PROFILE */
+
+#profiles{
+ position:fixed;
+ inset:0;
+ z-index:1000;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ background:
+ radial-gradient(circle at 50% 35%,#4b214c,#09070d 65%);
+}
+
+.profileBox{padding:25px}
+
+.logo{
+ font-family:Cinzel,serif;
+ letter-spacing:.16em;
+}
+
+.bigLogo{
+ font-size:clamp(40px,11vw,82px);
+ color:#fff;
+ text-shadow:0 0 30px #ff5b9166;
+}
+
+.profileSub{
+ color:#aaa;
+ margin-top:10px;
+}
+
+.profiles{
+ display:flex;
+ justify-content:center;
+ gap:25px;
+ margin-top:35px;
+ flex-wrap:wrap;
+}
+
+.profile{
+ background:none;
+ border:0;
+ color:#fff;
+ width:155px;
+}
+
+.avatar{
+ height:155px;
+ border-radius:20px;
+ display:grid;
+ place-items:center;
+ font-size:60px;
+ transition:.3s;
+ border:2px solid transparent;
+ box-shadow:0 20px 50px #0009;
+}
+
+.profile:hover .avatar{
+ transform:translateY(-8px);
+ border-color:var(--gold);
+ box-shadow:0 0 35px #e8c87855;
+}
+
+.kamaliAvatar{
+ background:linear-gradient(145deg,#602447,#d76891);
+}
+
+.thraveenAvatar{
+ background:linear-gradient(145deg,#1d405d,#6b94a8);
+}
+
+.profileName{
+ margin-top:12px;
+ font-weight:700;
+}
+
+/* NAV */
+
+#main{
+ display:none;
+}
+
+nav{
+ position:fixed;
+ top:0;
+ left:0;
+ right:0;
+ z-index:100;
+ height:68px;
+ padding:0 5%;
+ display:flex;
+ align-items:center;
+ gap:25px;
+ background:linear-gradient(#07060dee,transparent);
+ transition:.3s;
+}
+
+nav.scrolled{
+ background:#08070df2;
+ backdrop-filter:blur(15px);
+}
+
+.navLogo{
+ color:var(--gold);
+ font-family:Cinzel;
+ font-weight:700;
+ letter-spacing:.14em;
+}
+
+nav a{
+ color:#ddd;
+ text-decoration:none;
+ font-size:13px;
+}
+
+nav a:hover{color:var(--gold)}
+
+.navRight{
+ margin-left:auto;
+ display:flex;
+ gap:8px;
+}
+
+.iconBtn{
+ border:1px solid #ffffff22;
+ background:#ffffff0b;
+ color:white;
+ border-radius:50%;
+ width:40px;
+ height:40px;
+}
+
+/* HERO */
+
+.hero{
+ min-height:720px;
+ padding:150px 6% 70px;
+ display:flex;
+ align-items:flex-end;
+ position:relative;
+ overflow:hidden;
+ background:
+ linear-gradient(90deg,#08070df5,#08070d99,transparent),
+ linear-gradient(0deg,#08070d,transparent 55%),
+ radial-gradient(circle at 75% 30%,#703d7745,transparent 45%);
+}
+
+.hero:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:
+ radial-gradient(circle at 70% 60%,#ff5b9114,transparent 20%),
+ radial-gradient(circle at 50% 20%,#e8c8780b,transparent 25%);
+ animation:glow 5s infinite alternate;
+}
+
+@keyframes glow{
+ from{opacity:.5}
+ to{opacity:1}
+}
+
+.heroContent{
+ max-width:720px;
+ position:relative;
+ z-index:2;
+}
+
+.kicker{
+ color:var(--gold);
+ letter-spacing:.23em;
+ font-size:11px;
+ font-weight:800;
+ text-transform:uppercase;
+}
+
+.hero h1{
+ font-family:"Playfair Display",serif;
+ font-size:clamp(48px,9vw,90px);
+ line-height:.92;
+ margin:17px 0;
+}
+
+.hero h1 i{
+ color:var(--pink);
+}
+
+.hero p{
+ color:#d7d0da;
+ line-height:1.7;
+ font-size:16px;
+ max-width:650px;
+}
+
+.actions{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:25px;
+}
+
+.btn{
+ border:0;
+ padding:12px 18px;
+ border-radius:999px;
+ font-weight:800;
+ background:linear-gradient(135deg,#e8c878,#b88940);
+ color:#15100c;
+}
+
+.btnPink{
+ background:linear-gradient(135deg,#ff77a7,#9b72ff);
+ color:white;
+}
+
+.btnDark{
+ color:white;
+ background:#ffffff0c;
+ border:1px solid #ffffff22;
+}
+
+/* SECTIONS */
+
+.section{
+ padding:65px 6%;
+ max-width:1500px;
+ margin:auto;
+}
+
+.sectionTitle{
+ display:flex;
+ justify-content:space-between;
+ align-items:end;
+ gap:15px;
+ margin-bottom:22px;
+}
+
+.sectionTitle h2{
+ font-family:"Playfair Display";
+ font-size:34px;
+ margin:8px 0 0;
+}
+
+.sectionTitle span{
+ color:var(--muted);
+ font-size:11px;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px;
+}
+
+.card{
+ min-height:190px;
+ padding:20px;
+ border:1px solid var(--line);
+ border-radius:18px;
+ background:linear-gradient(145deg,#211827,#0f0d13);
+ position:relative;
+ overflow:hidden;
+ cursor:pointer;
+ transition:.3s;
+}
+
+.card:hover{
+ transform:translateY(-6px);
+ border-color:#e8c87855;
+ box-shadow:0 20px 50px #0009;
+}
+
+.cardIcon{
+ position:absolute;
+ right:16px;
+ top:14px;
+ font-size:34px;
+}
+
+.cardNumber{
+ color:var(--gold);
+ font-size:11px;
+ letter-spacing:.15em;
+}
+
+.card h3{
+ font-family:"Playfair Display";
+ font-size:23px;
+ margin:40px 0 8px;
+}
+
+.card p{
+ color:#aaa2ae;
+ font-size:13px;
+ line-height:1.5;
+}
+
+/* PASSPORT */
+
+.passport{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:14px;
+}
+
+.stamp{
+ aspect-ratio:1;
+ border:2px dashed #716471;
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ padding:18px;
+ cursor:pointer;
+ transition:.3s;
+}
+
+.stamp:hover{
+ transform:scale(1.04) rotate(-3deg);
+ border-color:var(--gold);
+}
+
+.stamp.done{
+ background:#2d1d29;
+ border-color:var(--gold);
+ box-shadow:0 0 25px #e8c87825;
+}
+
+.stampEmoji{
+ font-size:32px;
+ margin-bottom:8px;
+}
+
+.stamp b{
+ font-size:11px;
+}
+
+/* TRAIN */
+
+.train{
+ padding:28px;
+ border-radius:25px;
+ border:1px solid var(--line);
+ background:
+ radial-gradient(circle at 50% 100%,#49203f,transparent 55%),
+ #0c090f;
+ overflow:hidden;
+}
+
+.trainLine{
+ height:4px;
+ background:#554b57;
+ margin:50px 0 30px;
+ position:relative;
+}
+
+.trainLine:after{
+ content:"";
+ position:absolute;
+ inset:-7px 0;
+ background:repeating-linear-gradient(
+  90deg,
+  transparent 0 35px,
+  #756a75 36px 40px
+ );
+}
+
+.stations{
+ display:flex;
+ overflow-x:auto;
+ gap:22px;
+ padding-bottom:12px;
+}
+
+.station{
+ min-width:140px;
+ text-align:center;
+}
+
+.stationDot{
+ width:54px;
+ height:54px;
+ border-radius:50%;
+ margin:auto;
+ display:grid;
+ place-items:center;
+ background:#171119;
+ border:2px solid #625665;
+}
+
+.station:first-child .stationDot{
+ border-color:var(--gold);
+ box-shadow:0 0 25px #e8c87855;
+}
+
+.station b{
+ display:block;
+ margin-top:10px;
+ font-size:12px;
+}
+
+.station small{
+ color:#817983;
+}
+
+/* TIMELINE */
+
+.timeline{
+ border-left:1px solid #ffffff20;
+ margin-left:15px;
+ padding-left:25px;
+}
+
+.event{
+ position:relative;
+ margin-bottom:30px;
+}
+
+.event:before{
+ content:"";
+ position:absolute;
+ left:-32px;
+ top:4px;
+ width:13px;
+ height:13px;
+ border-radius:50%;
+ background:var(--gold);
+ box-shadow:0 0 15px #e8c87888;
+}
+
+.event b{
+ color:var(--gold);
+ font-size:11px;
+}
+
+.event h3{
+ font-family:"Playfair Display";
+ margin:7px 0;
+ font-size:23px;
+}
+
+.event p{
+ color:#aaa;
+ line-height:1.7;
+ margin:0;
+}
+
+/* RECEIPT */
+
+.receipt{
+ max-width:650px;
+ margin:auto;
+ padding:25px;
+ background:#eee3cb;
+ color:#201c19;
+ border-radius:10px;
+ box-shadow:0 25px 60px #0009;
+ font-family:monospace;
+}
+
+.receipt h2{
+ text-align:center;
+ font-family:Georgia,serif;
+}
+
+.receiptRow{
+ display:flex;
+ justify-content:space-between;
+ border-bottom:1px dashed #888;
+ padding:10px 0;
+}
+
+.receiptTotal{
+ font-weight:900;
+ font-size:18px;
+}
+
+/* LETTER */
+
+.letter{
+ background:linear-gradient(145deg,#f5ecd9,#d9c29a);
+ color:#281d1a;
+ border-radius:15px;
+ padding:30px;
+ box-shadow:0 20px 50px #0008;
+}
+
+.letter h2{
+ font-family:"Playfair Display";
+ font-size:30px;
+}
+
+.letter p{
+ font-family:"Playfair Display";
+ font-size:17px;
+ line-height:1.8;
+}
+
+/* GAMES */
+
+.gameGrid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+}
+
+.game{
+ min-height:150px;
+ padding:20px;
+ border-radius:17px;
+ border:1px solid #ffffff14;
+ background:#ffffff06;
+ cursor:pointer;
+ transition:.3s;
+}
+
+.game:hover{
+ transform:translateY(-5px);
+ border-color:#ff5b9166;
+ background:#ff5b910c;
+}
+
+.gameIcon{
+ font-size:32px;
+}
+
+.game strong{
+ display:block;
+ margin:10px 0;
+}
+
+.game small{
+ color:#928995;
+ line-height:1.5;
+}
+
+/* BIRTHDAY */
+
+.birthday{
+ border:1px solid #ffffff16;
+ border-radius:25px;
+ padding:45px 25px;
+ text-align:center;
+ background:
+ radial-gradient(circle at 50% 0,#692b5145,transparent 55%),
+ #121018;
+}
+
+.birthday h2{
+ font-family:"Playfair Display";
+ font-size:clamp(32px,6vw,55px);
+}
+
+/* MODAL */
+
+.modal{
+ position:fixed;
+ inset:0;
+ z-index:500;
+ display:none;
+ place-items:center;
+ padding:18px;
+ background:#000c;
+}
+
+.modal.show{
+ display:grid;
+}
+
+.modalBox{
+ width:min(700px,100%);
+ max-height:90vh;
+ overflow:auto;
+ padding:25px;
+ border-radius:23px;
+ border:1px solid #ffffff1a;
+ background:linear-gradient(145deg,#211725,#0f0c13);
+ box-shadow:0 30px 90px #000;
+}
+
+.modalHead{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.modalHead h2{
+ font-family:"Playfair Display";
+}
+
+.close{
+ width:38px;
+ height:38px;
+ border:0;
+ border-radius:50%;
+ color:white;
+ background:#ffffff12;
+}
+
+.gameArea{
+ margin-top:20px;
+ text-align:center;
+ min-height:220px;
+ display:grid;
+ place-items:center;
+}
+
+.question{
+ font-size:20px;
+ font-weight:700;
+ line-height:1.6;
+}
+
+.options{
+ display:grid;
+ gap:10px;
+ width:100%;
+ margin-top:20px;
+}
+
+.options button{
+ border:1px solid #ffffff18;
+ background:#ffffff08;
+ color:white;
+ padding:14px;
+ border-radius:12px;
+ text-align:left;
+}
+
+.options button:hover{
+ border-color:var(--gold);
+}
+
+input{
+ width:100%;
+ padding:14px;
+ background:#0007;
+ border:1px solid #ffffff22;
+ color:white;
+ border-radius:12px;
+ outline:none;
+}
+
+/* CAKE */
+
+.cake{
+ font-size:110px;
+ animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+ 50%{transform:translateY(-12px)}
+}
+
+/* EFFECTS */
+
+.confetti{
+ position:fixed;
+ z-index:900;
+ pointer-events:none;
+ font-size:20px;
+ animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+ to{
+  transform:translateY(110vh) rotate(720deg);
+  opacity:0;
+ }
+}
+
+.firework{
+ position:fixed;
+ z-index:899;
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:var(--gold);
+ box-shadow:0 0 25px 8px var(--gold);
+ animation:boom 1s forwards;
+}
+
+@keyframes boom{
+ to{
+  transform:scale(25);
+  opacity:0;
+ }
+}
+
+#toast{
+ position:fixed;
+ z-index:1000;
+ left:50%;
+ bottom:25px;
+ transform:translate(-50%,30px);
+ opacity:0;
+ padding:12px 18px;
+ border-radius:999px;
+ background:#19131e;
+ border:1px solid #ffffff20;
+ transition:.3s;
+ pointer-events:none;
+}
+
+#toast.show{
+ opacity:1;
+ transform:translate(-50%,0);
+}
+
+footer{
+ padding:80px 20px 100px;
+ text-align:center;
+ color:#746c77;
+}
+
+.footerHeart{
+ font-size:55px;
+ animation:pulse 1.3s infinite;
+}
+
+@keyframes pulse{
+ 50%{transform:scale(1.18)}
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+ .grid,.gameGrid{grid-template-columns:repeat(2,1fr)}
+ .passport{grid-template-columns:repeat(3,1fr)}
+ nav a{display:none}
+}
+
+@media(max-width:600px){
+ nav{padding:0 16px}
+ .hero{
+  min-height:650px;
+  padding:125px 20px 55px;
+ }
+ .section{padding:45px 18px}
+ .grid,.gameGrid{
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+ }
+ .passport{
+  grid-template-columns:repeat(2,1fr);
+ }
+ .card{
+  min-height:165px;
+  padding:16px;
+ }
+ .card h3{
+  font-size:19px;
+  margin-top:32px;
+ }
+ .hero h1{font-size:50px}
+ .hero p{font-size:14px}
+ .avatar{
+  height:135px;
+ }
+ .profile{width:135px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROFILE SCREEN -->
+
+<section id="profiles">
+
+<div class="profileBox">
+
+<div class="logo bigLogo">LOVEFLIX</div>
+
+<div class="profileSub">
+Who's watching?
+</div>
+
+<div class="profiles">
+
+<button class="profile" onclick="enterLove('Kamali')">
+<div class="avatar kamaliAvatar">🌙</div>
+<div class="profileName">Kamali</div>
+</button>
+
+<button class="profile" onclick="enterLove('Thraveen')">
+<div class="avatar thraveenAvatar">❤️</div>
+<div class="profileName">Thraveen</div>
+</button>
+
+</div>
+
+<p style="color:#777;margin-top:35px;font-size:12px">
+One story. Two hearts. Forever.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main id="main">
+
+<nav id="nav">
+
+<div class="navLogo">LOVEFLIX</div>
+
+<a href="#home">Home</a>
+<a href="#journey">Journey</a>
+<a href="#story">Story</a>
+<a href="#games">Games</a>
+<a href="#birthday">Birthday</a>
+
+<div class="navRight">
+<button class="iconBtn" onclick="toggleMusic()">♫</button>
+<button class="iconBtn" onclick="resetProgress()">↻</button>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="heroContent">
+
+<div class="kicker">
+A LOVEFLIX ORIGINAL • 2026
+</div>
+
+<h1>
+Kamali<br>
+<i>×</i> Thraveen
+</h1>
+
+<p>
+Our story isn't a movie we watched.
+It's the movie we are still writing —
+one memory, one promise and one heartbeat
+at a time.
+</p>
+
+<div class="actions">
+
+<button class="btn" onclick="openFeature('letter')">
+▶ Play our story
+</button>
+
+<button class="btn btnDark" onclick="go('journey')">
+＋ Explore memories
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- JOURNEY -->
+
+<section class="section" id="journey">
+
+<div class="sectionTitle">
+
+<div>
+<span>ACT 01 • THE JOURNEY</span>
+<h2>Our Love Universe</h2>
+</div>
+
+<span id="progressText">0% complete</span>
+
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="openFeature('ticket')">
+<div class="cardIcon">🎫</div>
+<div class="cardNumber">01</div>
+<h3>Golden Love Ticket</h3>
+<p>Admit one heart to a lifetime journey.</p>
+</div>
+
+<div class="card" onclick="openFeature('passport')">
+<div class="cardIcon">📖</div>
+<div class="cardNumber">02</div>
+<h3>Memory Passport</h3>
+<p>Collect 15 little stamps from our universe.</p>
+</div>
+
+<div class="card" onclick="openFeature('train')">
+<div class="cardIcon">🚂</div>
+<div class="cardNumber">03</div>
+<h3>Love Train</h3>
+<p>A cinematic ride through our destinations.</p>
+</div>
+
+<div class="card" onclick="openFeature('receipt')">
+<div class="cardIcon">🧾</div>
+<div class="cardNumber">04</div>
+<h3>Relationship Receipt</h3>
+<p>Proof that this love is priceless.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PASSPORT -->
+
+<section class="section">
+
+<div class="sectionTitle">
+
+<div>
+<span>15 DESTINATIONS</span>
+<h2>Memory Passport</h2>
+</div>
+
+</div>
+
+<div class="passport" id="passport"></div>
+
+</section>
+
+
+<!-- TRAIN -->
+
+<section class="section">
+
+<div class="train">
+
+<div class="sectionTitle">
+
+<div>
+<span>PLATFORM ∞</span>
+<h2>Love Train</h2>
+</div>
+
+<span>Destination: Forever</span>
+
+</div>
+
+<div class="trainLine"></div>
+
+<div class="stations" id="stations"></div>
+
+</div>
+
+</section>
+
+
+<!-- STORY -->
+
+<section class="section" id="story">
+
+<div class="sectionTitle">
+
+<div>
+<span>ACT 02 • OUR STORY</span>
+<h2>Then → Now</h2>
+</div>
+
+</div>
+
+<div class="timeline">
+
+<div class="event">
+<b>CHAPTER 01</b>
+<h3>The First Glance</h3>
+<p>
+Oru normal day… but somehow,
+two people slowly became part of the same story.
+</p>
+</div>
+
+<div class="event">
+<b>CHAPTER 02</b>
+<h3>The First Conversation</h3>
+<p>
+Small messages became longer conversations.
+Familiarity became comfort.
+</p>
+</div>
+
+<div class="event">
+<b>CHAPTER 03</b>
+<h3>Somewhere Between</h3>
+<p>
+Without announcing it,
+the heart started choosing the same person every day.
+</p>
+</div>
+
+<div class="event">
+<b>CHAPTER 04</b>
+<h3>Us</h3>
+<p>
+Today, the story has a name:
+Kamali × Thraveen.
+</p>
+</div>
+
+<div class="event">
+<b>CHAPTER 05</b>
+<h3>Forever Loading…</h3>
+<p>
+Not an ending.
+Just the next chapter waiting to be written together.
+</p>
+</div>
+
+</div>
+
+
+<div style="height:30px"></div>
+
+<div class="grid">
+
+<div class="card" onclick="openFeature('letter')">
+<div class="cardIcon">💌</div>
+<div class="cardNumber">LOVE LETTER</div>
+<h3>Secret Envelope</h3>
+<p>A message that was waiting for you.</p>
+</div>
+
+<div class="card" onclick="openFeature('vault')">
+<div class="cardIcon">🔐</div>
+<div class="cardNumber">PRIVATE</div>
+<h3>Love Password</h3>
+<p>Enter the secret code to unlock a heart.</p>
+</div>
+
+<div class="card" onclick="openFeature('things')">
+<div class="cardIcon">🕯️</div>
+<div class="cardNumber">UNSAID</div>
+<h3>Things I Never Said</h3>
+<p>Some feelings are too precious for ordinary words.</p>
+</div>
+
+<div class="card" onclick="openFeature('receipt')">
+<div class="cardIcon">💞</div>
+<div class="cardNumber">OFFICIAL</div>
+<h3>Relationship Receipt</h3>
+<p>Issued to Kamali & Thraveen.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section class="section" id="games">
+
+<div class="sectionTitle">
+
+<div>
+<span>ACT 03 • GAME ZONE</span>
+<h2>15 Little Challenges</h2>
+</div>
+
+</div>
+
+<div class="gameGrid" id="gamesGrid"></div>
+
+</section>
+
+
+<!-- BIRTHDAY -->
+
+<section class="section" id="birthday">
+
+<div class="birthday">
+
+<div class="kicker">
+ACT 04 • BIRTHDAY
+</div>
+
+<h2>
+Happy Birthday,
+<br>
+My Partner of Life ❤️
+</h2>
+
+<p style="color:#aaa;max-width:650px;margin:auto;line-height:1.7">
+Today is not just another birthday.
+It's another reason to celebrate the person
+who became a beautiful part of my world.
+</p>
+
+<div class="actions" style="justify-content:center">
+
+<button class="btn btnPink" onclick="openFeature('cake')">
+🎂 Light the Cake
+</button>
+
+<button class="btn btnDark" onclick="openFeature('gift')">
+🎁 Open Gift
+</button>
+
+<button class="btn btnDark" onclick="grandFinale()">
+✨ Grand Finale
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RECEIPT -->
+
+<section class="section">
+
+<div class="receipt">
+
+<h2>
+RELATIONSHIP RECEIPT
+</h2>
+
+<div class="receiptRow">
+<span>Customer</span>
+<b>Thraveen</b>
+</div>
+
+<div class="receiptRow">
+<span>Issued by</span>
+<b>Kamali</b>
+</div>
+
+<div class="receiptRow">
+<span>Product</span>
+<b>Forever Love</b>
+</div>
+
+<div class="receiptRow">
+<span>Quantity</span>
+<b>1 Lifetime</b>
+</div>
+
+<div class="receiptRow">
+<span>Memories</span>
+<b>∞</b>
+</div>
+
+<div class="receiptRow">
+<span>Promises</span>
+<b>∞</b>
+</div>
+
+<div class="receiptRow receiptTotal">
+<span>TOTAL</span>
+<b>PRICELESS ❤️</b>
+</div>
+
+<p style="text-align:center">
+No refunds. No expiry. Valid for forever.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footerHeart">♥</div>
+
+<div class="logo" style="color:var(--gold);margin-top:15px">
+KAMALI × THRAVEEN
+</div>
+
+<p>
+100% JOURNEY COMPLETE —
+if you choose to keep choosing us.
+</p>
+
+</footer>
+
+</main>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+<div class="modalBox">
+
+<div class="modalHead">
+
+<h2 id="modalTitle">
+Love
+</h2>
+
+<button class="close" onclick="closeModal()">
+×
+</button>
+
+</div>
+
+<div id="modalBody" class="gameArea"></div>
+
+</div>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<script>
+
+/* =========================
+   DATA
+========================= */
+
+const state = JSON.parse(
+ localStorage.getItem("loveflixState") ||
+ '{"stamps":[],"games":{},"music":false}'
+);
+
+const stampData=[
+ ["FIRST GLANCE","🌙"],
+ ["FIRST TALK","💬"],
+ ["FIRST SMILE","😊"],
+ ["FIRST CALL","📞"],
+ ["FIRST MEET","✨"],
+ ["LATE NIGHT","🌃"],
+ ["INSIDE JOKE","😂"],
+ ["MISS YOU","💌"],
+ ["SUPPORT","🤝"],
+ ["MEMORY","📸"],
+ ["TRUST","🔐"],
+ ["TOGETHER","🫶"],
+ ["PROMISE","💍"],
+ ["BIRTHDAY","🎂"],
+ ["FOREVER","♾️"]
+];
+
+const stationData=[
+ "First Chapter",
+ "First Talk",
+ "The Crush",
+ "Our Calls",
+ "First Meet",
+ "Late Nights",
+ "Little Fights",
+ "Big Laughs",
+ "Trust",
+ "Memories",
+ "Today",
+ "Future",
+ "Dream Home",
+ "Forever",
+ "Beyond"
+];
+
+const games=[
+ ["quiz","Love Quiz","How well do you know us?","❤️"],
+ ["match","Memory Match","Find matching hearts.","🃏"],
+ ["scratch","Scratch Card","Reveal a secret message.","🎟️"],
+ ["balloon","Balloon Blast","Pop the birthday balloons.","🎈"],
+ ["catch","Catch Hearts","Catch falling hearts.","💗"],
+ ["hidden","Hidden Heart","Find the secret heart.","🔎"],
+ ["lock","Love Lock","Unlock the relationship lock.","🔒"],
+ ["key","Key Hunt","Find the golden key.","🗝️"],
+ ["riddle","Love Riddle","Solve a tiny riddle.","🧩"],
+ ["wheel","Love Wheel","Spin for a surprise.","🎡"],
+ ["mystery","Mystery Box","Open what is hidden.","🎁"],
+ ["jigsaw","Jigsaw","Complete the puzzle.","🧩"],
+ ["yesno","Forever Question","One important question.","💍"],
+ ["promise","Promise Maker","Choose a promise.","🤝"],
+ ["fire","Fireworks","Launch the finale.","🎆"]
+];
+
+
+/* =========================
+   BASIC FUNCTIONS
+========================= */
+
+function save(){
+
+ localStorage.setItem(
+  "loveflixState",
+  JSON.stringify(state)
+ );
+
+ updateProgress();
+}
+
+function enterLove(name){
+
+ document.getElementById("profiles").style.display="none";
+ document.getElementById("main").style.display="block";
+
+ toast("Welcome, "+name+" ❤️");
+
+ window.scrollTo(0,0);
+
+ updateProgress();
+}
+
+function go(id){
+
+ document.getElementById(id)
+ .scrollIntoView({
+  behavior:"smooth"
+ });
+
+}
+
+window.addEventListener("scroll",function(){
+
+ document.getElementById("nav")
+ .classList.toggle("scrolled",window.scrollY>30);
+
+});
+
+
+/* =========================
+   PASSPORT
+========================= */
+
+function renderPassport(){
+
+ const box=document.getElementById("passport");
+
+ box.innerHTML=stampData.map((s,i)=>`
+
+ <div
+ class="stamp ${state.stamps.includes(i)?"done":""}"
+ onclick="collectStamp(${i})">
+
+ <div>
+
+ <div class="stampEmoji">${s[1]}</div>
+
+ <b>${s[0]}</b>
+
+ <small style="
+ display:block;
+ margin-top:6px;
+ color:#aaa;
+ font-size:9px
+ ">
+ ${state.stamps.includes(i)?"COLLECTED":"TAP TO STAMP"}
+ </small>
+
+ </div>
+
+ </div>
+
+ `).join("");
+
+}
+
+function collectStamp(i){
+
+ if(state.stamps.includes(i)){
+
+  toast("Already collected ❤️");
+
+  return;
+
+ }
+
+ state.stamps.push(i);
+
+ save();
+
+ renderPassport();
+
+ toast(stampData[i][0]+" unlocked ✨");
+
+}
+
+
+/* =========================
+   TRAIN
+========================= */
+
+function renderStations(){
+
+ document.getElementById("stations").innerHTML=
+ stationData.map((s,i)=>`
+
+ <div class="station">
+
+ <div class="stationDot">
+ ${i+1}
+ </div>
+
+ <b>${s}</b>
+
+ <small>
+ Chapter ${String(i+1).padStart(2,"0")}
+ </small>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================
+   GAMES
+========================= */
+
+function renderGames(){
+
+ document.getElementById("gamesGrid").innerHTML=
+ games.map((g,i)=>`
+
+ <div class="game" onclick="playGame('${g[0]}')">
+
+ <div class="gameIcon">${g[3]}</div>
+
+ <strong>
+ ${i+1}. ${g[1]}
+ </strong>
+
+ <small>
+ ${g[2]}
+ </small>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
+
+ const total=15+games.length;
+
+ const done=
+ state.stamps.length+
+ Object.keys(state.games).length;
+
+ const percent=
+ Math.min(100,Math.round(done/total*100));
+
+ document.getElementById("progressText")
+ .textContent=percent+"% complete";
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal(title,html){
+
+ document.getElementById("modalTitle")
+ .textContent=title;
+
+ document.getElementById("modalBody")
+ .innerHTML=html;
+
+ document.getElementById("modal")
+ .classList.add("show");
+
+}
+
+function closeModal(){
+
+ document.getElementById("modal")
+ .classList.remove("show");
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(text){
+
+ const t=document.getElementById("toast");
+
+ t.textContent=text;
+
+ t.classList.add("show");
+
+ setTimeout(()=>{
+  t.classList.remove("show");
+ },2200);
+
+}
+
+
+/* =========================
+   COMPLETE GAME
+========================= */
+
+function completeGame(id,message){
+
+ state.games[id]=true;
+
+ save();
+
+ if(message) toast(message);
+
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+function openFeature(type){
+
+ if(type==="ticket"){
+
+  openModal(
+   "GOLDEN LOVE TICKET",
+
+   `
+   <div style="
+   width:100%;
+   padding:28px;
+   border:2px solid var(--gold);
+   border-radius:18px;
+   background:#20190f">
+
+   <div class="kicker">
+   LOVEFLIX RAILWAYS
+   </div>
+
+   <h2 style="
+   font-family:Cinzel;
+   color:var(--gold)">
+   GOLDEN TICKET
+   </h2>
+
+   <p style="
+   font-family:'Playfair Display';
+   font-size:27px">
+   KAMALI ♥ THRAVEEN
+   </p>
+
+   <p>
+   Passenger: <b>Two Hearts</b><br>
+   Destination: <b>FOREVER</b><br>
+   Class: <b>FIRST & ONLY</b><br>
+   Valid: <b>LIFETIME</b>
+   </p>
+
+   <button
+   class="btn"
+   onclick="
+   completeGame('ticket','Ticket stamped ❤️');
+   closeModal();
+   ">
+   STAMP TICKET
+   </button>
+
+   </div>
+   `
+  );
+
+ }
+
+
+ else if(type==="passport"){
+
+  openModal(
+   "MEMORY PASSPORT",
+
+   `
+   <p>
+   Collect all 15 memories.
+   </p>
+
+   <div style="
+   height:6px;
+   background:#ffffff12;
+   border-radius:10px">
+
+   <div style="
+   height:100%;
+   width:${state.stamps.length/15*100}%;
+   background:linear-gradient(90deg,var(--pink),var(--gold));
+   border-radius:10px">
+   </div>
+
+   </div>
+
+   <p>
+   ${state.stamps.length}/15 collected
+   </p>
+   `
+  );
+
+ }
+
+
+ else if(type==="train"){
+
+  openModal(
+   "LOVE TRAIN",
+
+   `
+   <div style="text-align:center">
+
+   <div style="font-size:100px">
+   🚂
+   </div>
+
+   <div class="question">
+   Next stop: Forever.
+   </div>
+
+   <button
+   class="btn"
+   onclick="
+   completeGame('train','All aboard ❤️');
+   closeModal();
+   ">
+   BOARD THE TRAIN
+   </button>
+
+   </div>
+   `
+  );
+
+ }
+
+
+ else if(type==="receipt"){
+
+  openModal(
+   "RELATIONSHIP RECEIPT",
+
+   `
+   <div class="receipt">
+
+   <h2>
+   LOVE RECEIPT
+   </h2>
+
+   <div class="receiptRow">
+   <span>Customer</span>
+   <b>Thraveen</b>
+   </div>
+
+   <div class="receiptRow">
+   <span>Issued By</span>
+   <b>Kamali</b>
+   </div>
+
+   <div class="receiptRow">
+   <span>Product</span>
+   <b>Forever Love</b>
+   </div>
+
+   <div class="receiptRow">
+   <span>Memories</span>
+   <b>∞</b>
+   </div>
+
+   <div class="receiptRow">
+   <span>Promises</span>
+   <b>∞</b>
+   </div>
+
+   <div class="receiptRow receiptTotal">
+   <span>TOTAL</span>
+   <b>PRICELESS ❤️</b>
+   </div>
+
+   </div>
+   `
+  );
+
+ }
+
+
+ else if(type==="letter"){
+
+  openModal(
+   "SECRET LOVE LETTER",
+
+   `
+   <div class="letter">
+
+   <h2>
+   To Thraveen,
+   </h2>
+
+   <p>
+   Sometimes I wonder how an ordinary chapter
+   slowly became one of the most beautiful
+   parts of my life.
+   </p>
+
+   <p>
+   Unakku solla mudiyadha sila feelings irukku…
+   but one thing is simple:
+   <b>nee en story-la just oru character illa —
+   nee en favourite chapter.</b>
+   </p>
+
+   <p>
+   Whatever comes next, I want our story to keep
+   having new pages, new laughs, new memories
+   and new reasons to say “us”.
+   </p>
+
+   <p style="text-align:right">
+   With all my heart,<br>
+   <b>Kamali ❤️</b>
+   </p>
+
+   </div>
+
+   <button
+   class="btn"
+   style="margin-top:15px"
+   onclick="
+   completeGame('letter');
+   closeModal();
+   toast('Letter saved in your heart 💌');
+   ">
+   KEEP THIS LETTER
+   </button>
+   `
+  );
+
+ }
+
+
+ else if(type==="vault"){
+
+  openVault();
+
+ }
+
+
+ else if(type==="things"){
+
+  openModal(
+   "THINGS I NEVER SAID",
+
+   `
+   <div class="letter">
+
+   <h2>
+   Things I never said enough…
+   </h2>
+
+   <p>
+   “I notice the little things.”
+   </p>
+
+   <p>
+   “Your presence can change my whole mood.”
+   </p>
+
+   <p>
+   “I am proud of the memories we created.”
+   </p>
+
+   <p>
+   “I don't need a perfect story.
+   I just want a real one with you.”
+   </p>
+
+   <p>
+   <b>
+   And the biggest one:
+   I choose you. Again and again. ❤️
+   </b>
+   </p>
+
+   </div>
+   `
+  );
+
+ }
+
+
+ else if(type==="cake"){
+
+  openCake();
+
+ }
+
+
+ else if(type==="gift"){
+
+  openGift();
+
+ }
+
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function openVault(){
+
+ openModal(
+  "LOVE PASSWORD VAULT",
+
+  `
+  <p>
+  Hint:
+  <b>our forever number</b>
+  </p>
+
+  <input
+  id="passwordInput"
+  type="text"
+  inputmode="numeric"
+  maxlength="8"
+  placeholder="Enter password">
+
+  <button
+  class="btn"
+  style="margin-top:12px"
+  onclick="checkPassword()">
+  UNLOCK 🔐
+  </button>
+
+  <div id="passwordResult"
+  style="margin-top:15px">
+  </div>
+  `
+ );
+
+}
+
+function checkPassword(){
+
+ const value=
+ document.getElementById("passwordInput").value.trim();
+
+ if(value==="2208"){
+
+  completeGame("vault");
+
+  document.getElementById("passwordResult").innerHTML=`
+
+  <div class="letter">
+
+  <h2>
+  Unlocked ❤️
+  </h2>
+
+  <p>
+  Forever is not a date.
+  It is a decision we keep making.
+  </p>
+
+  </div>
+
+  `;
+
+ }
+ else{
+
+  document.getElementById("passwordResult")
+  .textContent="Not this one… try again 💕";
+
+ }
+
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+function openCake(){
+
+ openModal(
+  "BIRTHDAY CAKE",
+
+  `
+  <div>
+
+  <div class="cake">
+  🎂
+  </div>
+
+  <p class="question">
+  One candle.
+  One wish.
+  One beautiful life ahead.
+  </p>
+
+  <button
+  class="btn btnPink"
+  onclick="blowCake()">
+  MAKE A WISH ✨
+  </button>
+
+  </div>
+  `
+ );
+
+}
+
+function blowCake(){
+
+ confetti(80);
+
+ fireworks(5);
+
+ completeGame(
+  "cake",
+  "Wish accepted 🎂❤️"
+ );
+
+ document.getElementById("modalBody").innerHTML=`
+
+ <div class="cake">
+ ✨🎂✨
+ </div>
+
+ <h2>
+ Happy Birthday, Thraveen! ❤️
+ </h2>
+
+ <p>
+ May every year ahead bring more laughter,
+ peace, love and beautiful memories.
+ </p>
+
+ `;
+
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+function openGift(){
+
+ openModal(
+  "GOLDEN BOX",
+
+  `
+  <div>
+
+  <div style="font-size:120px">
+  🎁
+  </div>
+
+  <p class="question">
+  There is something inside
+  that cannot be wrapped.
+  </p>
+
+  <button
+  class="btn"
+  onclick="openGiftInside()">
+  OPEN GIFT
+  </button>
+
+  </div>
+  `
+ );
+
+}
+
+function openGiftInside(){
+
+ completeGame("gift");
+
+ document.getElementById("modalBody").innerHTML=`
+
+ <div style="font-size:100px">
+ 💖
+ </div>
+
+ <h2>
+ My Promise
+ </h2>
+
+ <p style="line-height:1.8">
+ I will keep choosing the little moments,
+ the laughs, the support and the love
+ that make “us” special.
+ </p>
+
+ `;
+
+}
+
+
+/* =========================
+   GAME SELECTOR
+========================= */
+
+function playGame(id){
+
+ switch(id){
+
+ case "quiz":
+  loveQuiz();
+  break;
+
+ case "match":
+  memoryMatch();
+  break;
+
+ case "scratch":
+  scratchCard();
+  break;
+
+ case "balloon":
+  balloonBlast();
+  break;
+
+ case "catch":
+  catchHearts();
+  break;
+
+ case "hidden":
+  hiddenHeart();
+  break;
+
+ case "lock":
+  loveLock();
+  break;
+
+ case "key":
+  keyHunt();
+  break;
+
+ case "riddle":
+  loveRiddle();
+  break;
+
+ case "wheel":
+  loveWheel();
+  break;
+
+ case "mystery":
+  mysteryBox();
+  break;
+
+ case "jigsaw":
+  jigsaw();
+  break;
+
+ case "yesno":
+  foreverQuestion();
+  break;
+
+ case "promise":
+  promiseMaker();
+  break;
+
+ case "fire":
+  grandFinale();
+  break;
+
+ }
+
+}
+
+
+/* =========================
+   GAME 1
+========================= */
+
+function loveQuiz(){
+
+ openModal(
+  "LOVE QUIZ",
+
+  `
+  <div style="width:100%">
+
+  <div class="question">
+  Which word describes our story best?
+  </div>
+
+  <div class="options">
+
+  <button onclick="quizCorrect()">
+  Unexpected ❤️
+  </button>
+
+  <button onclick="quizCorrect()">
+  Beautiful ✨
+  </button>
+
+  <button onclick="quizCorrect()">
+  Forever ♾️
+  </button>
+
+  <button onclick="quizCorrect()">
+  All of these ❤️
+  </button>
+
+  </div>
+
+  </div>
+  `
+ );
+
+}
+
+function quizCorrect(){
+
+ completeGame("quiz");
+
+ closeModal();
+
+ toast("Correct — all of these! ❤️");
+
+}
+
+
+/* =========================
+   GAME 2 MEMORY MATCH
+========================= */
+
+function memoryMatch(){
+
+ const values=[
+  "❤️","🌙","💎","🌹",
+  "❤️","🌙","💎","🌹"
+ ].sort(()=>Math.random()-.5);
+
+ let first=null;
+ let locked=false;
+ let found=0;
+
+ openModal(
+  "MEMORY MATCH",
+
+  `
+  <p>
+  Find all matching pairs.
+  </p>
+
+  <div
+  id="matchGrid"
+  style="
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px">
+
+  ${values.map((x,i)=>`
+
+  <button
+  id="m${i}"
+  style="
+  height:65px;
+  font-size:28px;
+  background:#ffffff0a;
+  border:1px solid #ffffff18;
+  border-radius:10px;
+  color:white"
+  onclick="flipCard(${i})">
+  ?
+  </button>
+
+  `).join("")}
+
+  </div>
+  `
+ );
+
+ window.flipCard=function(i){
+
+  if(locked) return;
+
+  const button=
+  document.getElementById("m"+i);
+
+  if(button.textContent!=="?") return;
+
+  button.textContent=values[i];
+
+  if(first===null){
+
+   first=i;
+
+  }
+  else{
+
+   if(values[first]===values[i]){
+
+    found+=2;
+    first=null;
+
+    if(found===values.length){
+
+     completeGame("match");
+
+     toast("All pairs matched ❤️");
+
+    }
+
+   }
+   else{
+
+    locked=true;
+
+    const old=first;
+
+    setTimeout(()=>{
+
+     document.getElementById("m"+old)
+     .textContent="?";
+
+     button.textContent="?";
+
+     first=null;
+     locked=false;
+
+    },650);
+
+   }
+
+  }
+
+ };
+
+}
+
+
+/* =========================
+   GAME 3 SCRATCH
+========================= */
+
+function scratchCard(){
+
+ openModal(
+  "SCRATCH CARD",
+
+  `
+  <p>
+  Tap the card to reveal the secret.
+  </p>
+
+  <div
+  onclick="revealScratch(this)"
+  style="
+  width:100%;
+  height:180px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:
+  repeating-linear-gradient(
+   45deg,
+   #777 0 10px,
+   #aaa 10px 20px
+  );
+  color:#222;
+  font-weight:900;
+  font-size:20px;
+  cursor:pointer">
+
+  SCRATCH ♥
+  </div>
+  `
+ );
+
+}
+
+function revealScratch(el){
+
+ el.innerHTML=
+ `<div style="
+ color:var(--gold);
+ font-size:24px">
+ You are my favourite notification. 💌
+ </div>`;
+
+ completeGame("scratch");
+
+}
+
+
+/* =========================
+   GAME 4 BALLOON
+========================= */
+
+function balloonBlast(){
+
+ let count=0;
+
+ openModal(
+  "BALLOON BLAST",
+
+  `
+  <p>
+  Pop all 7 balloons!
+  </p>
+
+  <div id="balloonArea"
+  style="
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center">
+
+  ${Array.from({length:7},(_,i)=>`
+
+  <button
+  onclick="popBalloon(this)"
+  style="
+  border:0;
+  background:none;
+  font-size:50px">
+  🎈
+  </button>
+
+  `).join("")}
+
+  </div>
+
+  <p id="balloonScore">
+  0 / 7
+  </p>
+  `
+ );
+
+ window.popBalloon=function(btn){
+
+  if(btn.dataset.done) return;
+
+  btn.dataset.done="1";
+  btn.textContent="💥";
+
+  count++;
+
+  document.getElementById("balloonScore")
+  .textContent=count+" / 7";
+
+  if(count===7){
+
+   completeGame(
+    "balloon",
+    "All balloons popped! 🎈"
+   );
+
+  }
+
+ };
+
+}
+
+
+/* =========================
+   GAME 5 CATCH HEARTS
+========================= */
+
+function catchHearts(){
+
+ let count=0;
+
+ openModal(
+  "CATCH HEARTS",
+
+  `
+  <p>
+  Catch 10 hearts.
+  </p>
+
+  <div
+  id="heartArea"
+  style="
+  height:270px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid #ffffff15;
+  border-radius:15px">
+  </div>
+
+  <p id="heartScore">
+  0 / 10
+  </p>
+  `
+ );
+
+ const area=document.getElementById("heartArea");
+
+ const timer=setInterval(()=>{
+
+  const heart=document.createElement("button");
+
+  heart.textContent="💗";
+
+  heart.style.cssText=`
+  position:absolute;
+  left:${Math.random()*85}%;
+  top:${Math.random()*80}%;
+  font-size:30px;
+  background:none;
+  border:0;
+  `;
+
+  heart.onclick=function(){
+
+   count++;
+
+   heart.remove();
+
+   document.getElementById("heartScore")
+   .textContent=count+" / 10";
+
+   if(count>=10){
+
+    clearInterval(timer);
+
+    completeGame(
+     "catch",
+     "10 hearts caught! ❤️"
+    );
+
+    closeModal();
+
+   }
+
+  };
+
+  area.appendChild(heart);
+
+  setTimeout(()=>{
+   if(heart.parentNode)
+   heart.remove();
+  },1000);
+
+ },450);
+
+}
+
+
+/* =========================
+   GAME 6 HIDDEN HEART
+========================= */
+
+function hiddenHeart(){
+
+ openModal(
+  "HIDDEN HEART",
+
+  `
+  <p>
+  Find the tiny heart.
+  </p>
+
+  <div
+  style="
+  height:280px;
+  position:relative;
+  border-radius:15px;
+  background:
+  radial-gradient(
+   circle,
+   #3a1e3c,
+   #0b080e
+  )">
+
+  <button
+  onclick="
+  completeGame('hidden');
+  closeModal();
+  toast('You found it! 💗');
+  "
+  style="
+  position:absolute;
+  left:76%;
+  top:63%;
+  background:none;
+  border:0;
+  color:#ffffff44;
+  font-size:18px">
+  ♡
+  </button>
+
+  </div>
+  `
+ );
+
+}
+
+
+/* =========================
+   GAME 7 LOVE LOCK
+========================= */
+
+function loveLock(){
+
+ openModal(
+  "LOVE LOCK",
+
+  `
+  <p>
+  Choose the number that feels like forever.
+  </p>
+
+  <div
+  style="
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  max-width:300px;
+  margin:auto">
+
+  ${[1,2,3,4,5,6,7,8,9].map(n=>`
+
+  <button
+  onclick="lockNumber(${n})"
+  style="
+  padding:15px;
+  border:0;
+  border-radius:10px;
+  background:#ffffff10;
+  color:white">
+  ${n}
+  </button>
+
+  `).join("")}
+
+  </div>
+
+  <div id="lockMessage"
+  style="margin-top:15px">
+  </div>
+  `
+ );
+
+}
+
+function lockNumber(n){
+
+ const message=document.getElementById("lockMessage");
+
+ if(n===8){
+
+  completeGame("lock");
+
+  message.innerHTML=`
+  <h2>🔓 Unlocked!</h2>
+  <p>
+  Our lock opens with trust, not numbers.
+  </p>
+  `;
+
+ }
+ else{
+
+  message.textContent=
+  "Locked… try again ❤️";
+
+ }
+
+}
+
+
+/* =========================
+   GAME 8 KEY HUNT
+========================= */
+
+function keyHunt(){
+
+ openModal(
+  "KEY HUNT",
+
+  `
+  <p>
+  Find the golden key hidden below.
+  </p>
+
+  <div
+  style="
+  height:280px;
+  position:relative">
+
+  ${Array.from({length:40},()=>`
+  <span style="
+  display:inline-block;
+  margin:7px;
+  color:#ffffff18">
+  •
+  </span>
+  `).join("")}
+
+  <button
+  onclick="
+  completeGame('key');
+  closeModal();
+  toast('Golden key found! 🗝️');
+  "
+  style="
+  position:absolute;
+  left:62%;
+  top:45%;
+  font-size:22px;
+  background:none;
+  border:0;
+  opacity:.4">
+  🗝️
+  </button>
+
+  </div>
+  `
+ );
+
+}
+
+
+/* =========================
+   GAME 9 RIDDLE
+========================= */
+
+function loveRiddle(){
+
+ openModal(
+  "LOVE RIDDLE",
+
+  `
+  <div style="width:100%">
+
+  <div class="question">
+  I cannot be bought.
+  I cannot be seen.
+  But I can make ordinary days feel magical.
+  What am I?
+  </div>
+
+  <div class="options">
+
+  <button onclick="
+  completeGame('riddle');
+  closeModal();
+  toast('Correct: LOVE ❤️');
+  ">
+  Love
+  </button>
+
+  <button onclick="toast('Try again 💕')">
+  Money
+  </button>
+
+  <button onclick="toast('Try again 💕')">
+  Time
+  </button>
+
+  </div>
+
+  </div>
+  `
+ );
+
+}
+
+
+/* =========================
+   GAME 10 WHEEL
+========================= */
+
+function loveWheel(){
+
+ const items=[
+  "Give a hug 🤗",
+  "Say I love you ❤️",
+  "Share a memory 📸",
+  "Make a promise 🤝",
+  "Smile 😊",
+  "Plan a date ✨"
+ ];
+
+ openModal(
+  "LOVE WHEEL",
+
+  `
+  <div>
+
+  <div id="wheelEmoji"
+  style="
+  font-size:80px;
+  transition:1s">
+  🎡
+  </div>
+
+  <button
+  class="btn btnPink"
+  onclick="spinWheel()">
+  SPIN
+  </button>
+
+  <p id="wheelResult"></p>
+
+  </div>
+  `
+ );
+
+ window.spinWheel=function(){
+
+  const result=
+  items[Math.floor(Math.random()*items.length)];
+
+  document.getElementById("wheelEmoji")
+  .style.transform="rotate(720deg)";
+
+  document.getElementById("wheelResult")
+  .textContent=result;
+
+  completeGame("wheel");
+
+ };
+
+}
+
+
+/* =========================
+   GAME 11 MYSTERY BOX
+========================= */
+
+function mysteryBox(){
+
+ openModal(
+  "MYSTERY BOX",
+
+  `
+  <div>
+
+  <div style="font-size:120px">
+  📦
+  </div>
+
+  <button
+  class="btn"
+  onclick="openMystery()">
+  OPEN
+  </button>
+
+  </div>
+  `
+ );
+
+}
+
+function openMystery(){
+
+ completeGame("mystery");
+
+ document.getElementById("modalBody").innerHTML=`
+
+ <div style="font-size:100px">
+ 💎
+ </div>
+
+ <h2>
+ Secret Found
+ </h2>
+
+ <p>
+ Our most valuable thing is not a gift —
+ it is every memory we keep.
+ </p>
+
+ `;
+
+}
+
+
+/* =========================
+   GAME 12 JIGSAW
+========================= */
+
+function jigsaw(){
+
+ const original=[
+  "🌙",
+  "💗",
+  "✨",
+  "🫶",
+  "🌹",
+  "💎",
+  "🎂",
+  "♾️"
+ ];
+
+ const shuffled=[...original]
+ .sort(()=>Math.random()-.5);
+
+ let selected=null;
+
+ openModal(
+  "LOVE JIGSAW",
+
+  `
+  <p>
+  Arrange the symbols into the original order.
+  </p>
+
+  <div
+  id="puzzle"
+  style="
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px">
+
+  ${shuffled.map((x,i)=>`
+
+  <button
+  onclick="selectTile(${i})"
+  style="
+  height:70px;
+  font-size:30px;
+  background:#ffffff09;
+  color:white;
+  border:1px solid #ffffff15;
+  border-radius:10px">
+
+  ${x}
+
+  </button>
+
+  `).join("")}
+
+  </div>
+
+  <p id="puzzleMessage"></p>
+  `
+ );
+
+ window.selectTile=function(i){
+
+  const box=document.getElementById("puzzle");
+  const buttons=box.children;
+
+  if(selected===null){
+
+   selected=buttons[i];
+
+   selected.style.outline=
+   "2px solid var(--gold)";
+
+  }
+  else{
+
+   const temp=buttons[i].innerHTML;
+
+   buttons[i].innerHTML=
+   selected.innerHTML;
+
+   selected.innerHTML=temp;
+
+   selected.style.outline="none";
+
+   selected=null;
+
+   const current=
+   [...buttons].map(x=>x.textContent);
+
+   if(current.join("")===original.join("")){
+
+    completeGame("jigsaw");
+
+    document.getElementById("puzzleMessage")
+    .textContent=
+    "Puzzle complete! 🧩❤️";
+
+   }
+
+  }
+
+ };
+
+}
+
+
+/* =========================
+   GAME 13 FOREVER
+========================= */
+
+function foreverQuestion(){
+
+ openModal(
+  "FOREVER QUESTION",
+
+  `
+  <div>
+
+  <div class="question">
+  If our story were a movie,
+  would you watch every chapter again?
+  </div>
+
+  <div class="actions"
+  style="justify-content:center">
+
+  <button
+  class="btn btnPink"
+  onclick="
+  completeGame('yesno');
+  confetti(50);
+  closeModal();
+  toast('YES. Every chapter. ❤️');
+  ">
+  YES — EVERY TIME
+  </button>
+
+  <button
+  class="btn btnDark"
+  onclick="
+  toast('There is only one answer here 😌');
+  ">
+  Maybe
+  </button>
+
+  </div>
+
+  </div>
+  `
+ );
+
+}
+
+
+/* =========================
+   GAME 14 PROMISE
+========================= */
+
+function promiseMaker(){
+
+ const promises=[
+  "I will communicate. 🤝",
+  "I will support your dreams. 🌙",
+  "I will protect our memories. 📸",
+  "I will keep choosing us. ❤️"
+ ];
+
+ openModal(
+  "PROMISE MAKER",
+
+  `
+  <p>
+  Choose one promise to carry forward.
+  </p>
+
+  <div class="options">
+
+  ${promises.map(x=>`
+
+  <button
+  onclick="
+  completeGame('promise');
+  closeModal();
+  toast('${x.replace(/'/g,"\\'")}');
+  ">
+
+  ${x}
+
+  </button>
+
+  `).join("")}
+
+  </div>
+  `
+ );
+
+}
+
+
+/* =========================
+   GRAND FINALE
+========================= */
+
+function grandFinale(){
+
+ closeModal();
+
+ confetti(130);
+
+ fireworks(9);
+
+ setTimeout(()=>{
+
+  openModal(
+   "GRAND FINALE",
+
+   `
+   <div style="text-align:center">
+
+   <div style="font-size:80px">
+   ❤️
+   </div>
+
+   <div class="kicker">
+   100% JOURNEY COMPLETE
+   </div>
+
+   <h2
+   style="
+   font-family:'Playfair Display';
+   font-size:42px">
+   Kamali × Thraveen
+   </h2>
+
+   <p
+   style="
+   font-size:18px;
+   line-height:1.9">
+
+   This isn't “The End”.
+
+   <br>
+
+   <b>
+   This is “To Be Continued…”
+   </b>
+
+   <br><br>
+
+   More birthdays.
+   More memories.
+   More silly moments.
+   More dreams.
+   More us.
+
+   </p>
+
+   <button
+   class="btn btnPink"
+   onclick="
+   closeModal();
+   toast('Forever loading… ♾️❤️');
+   ">
+   KEEP OUR STORY
+   </button>
+
+   </div>
+   `
+  );
+
+ },300);
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function confetti(amount=60){
+
+ for(let i=0;i<amount;i++){
+
+  const element=
+  document.createElement("div");
+
+  element.className="confetti";
+
+  element.textContent=
+  ["♥","✦","❤","✨","🌸"]
+  [Math.floor(Math.random()*5)];
+
+  element.style.left=
+  Math.random()*100+"vw";
+
+  element.style.top=
+  (-10-Math.random()*20)+"vh";
+
+  element.style.animationDuration=
+  (1.5+Math.random()*2)+"s";
+
+  document.body.appendChild(element);
+
+  setTimeout(()=>{
+   element.remove();
+  },4000);
+
+ }
+
+}
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+function fireworks(amount=5){
+
+ for(let i=0;i<amount;i++){
+
+  setTimeout(()=>{
+
+   const element=
+   document.createElement("div");
+
+   element.className="firework";
+
+   element.style.left=
+   (15+Math.random()*70)+"vw";
+
+   element.style.top=
+   (15+Math.random()*50)+"vh";
+
+   document.body.appendChild(element);
+
+   setTimeout(()=>{
+    element.remove();
+   },1100);
+
+  },i*280);
+
+ }
+
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+function toggleMusic(){
+
+ state.music=!state.music;
+
+ save();
+
+ if(state.music){
+
+  toast("Music mode ON ♫");
+
+ }
+ else{
+
+  toast("Music mode OFF");
+
+ }
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetProgress(){
+
+ if(confirm(
+ "Reset all LoveFlix progress?"
+ )){
+
+  localStorage.removeItem(
+   "loveflixState"
+  );
+
+  location.reload();
+
+ }
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+renderPassport();
+
+renderStations();
+
+renderGames();
+
+updateProgress();
+
+
+/* CLOSE MODAL OUTSIDE */
+
+document.getElementById("modal")
+.addEventListener("click",function(e){
+
+ if(e.target===this){
+  closeModal();
+ }
+
+});
+
+</script>
+
+</body>
+  </html>
